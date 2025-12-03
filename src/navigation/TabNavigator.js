@@ -1,34 +1,39 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AnimatedTabIcon from '../components/AnimatedTabIcon';
-import Home from '../screens/Home';
-import { View, Text } from 'react-native';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import AnimatedTabIcon from "../components/AnimatedTabIcon";
+import Home from "../screens/Home";
+import TeamProducts from "../screens/TeamProducts/TeamProducts.js";
+import ProductDetails from "../screens/ProductDetails/ProductDetails";
+import { View, Text } from "react-native";
+import Cart from "../screens/Cart/Cart";
+import Favorites from "../screens/Favorites/Favorites";
+import { createStackNavigator } from "@react-navigation/stack";
 
-function CarrinhoScreen() {
-  return (
-    <View style={{ flex:1, justifyContent:'center', alignItems:'center' }}>
-      <Text>Carrinho</Text>
-    </View>
-  );
-}
+// Carrinho screen moved to /screens/Cart/Cart.js
 
-function FavoritosScreen() {
-  return (
-    <View style={{ flex:1, justifyContent:'center', alignItems:'center' }}>
-      <Text>Favoritos</Text>
-    </View>
-  );
-}
+// Favoritos screen moved to /screens/Favorites/Favorites.js
 
 function PerfilScreen() {
   return (
-    <View style={{ flex:1, justifyContent:'center', alignItems:'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Perfil</Text>
     </View>
   );
 }
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createStackNavigator();
+
+// 🔥 Stack exclusivo da aba Home
+function HomeStackNavigator() {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="HomeMain" component={Home} />
+      <HomeStack.Screen name="ProductDetails" component={ProductDetails} />
+      <HomeStack.Screen name="TeamProducts" component={TeamProducts} />
+    </HomeStack.Navigator>
+  );
+}
 
 export default function TabNavigator() {
   return (
@@ -48,46 +53,49 @@ export default function TabNavigator() {
         },
         tabBarShowLabel: false,
         tabBarActiveTintColor: "#000",
-        tabBarInactiveTintColor: "#777"
+        tabBarInactiveTintColor: "#777",
       }}
     >
-      <Tab.Screen 
+      {/* 🔥 Aba Home agora usa um Stack */}
+      <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStackNavigator}
         options={{
           tabBarIcon: ({ focused, color }) => (
-            <AnimatedTabIcon name="home-outline" focused={focused} color={color} />
-          )
+            <AnimatedTabIcon
+              name="home-outline"
+              focused={focused}
+              color={color}
+            />
+          ),
         }}
       />
 
-      <Tab.Screen 
+      <Tab.Screen
         name="Carrinho"
-        component={CarrinhoScreen}
+        component={Cart}
         options={{
           tabBarIcon: ({ focused, color }) => (
-            <AnimatedTabIcon name="cart-outline" focused={focused} color={color} />
-          )
+            <AnimatedTabIcon
+              name="cart-outline"
+              focused={focused}
+              color={color}
+            />
+          ),
         }}
       />
 
-      <Tab.Screen 
+      <Tab.Screen
         name="Favoritos"
-        component={FavoritosScreen}
+        component={Favorites}
         options={{
           tabBarIcon: ({ focused, color }) => (
-            <AnimatedTabIcon name="heart-outline" focused={focused} color={color} />
-          )
-        }}
-      />
-
-      <Tab.Screen 
-        name="Perfil"
-        component={PerfilScreen}
-        options={{
-          tabBarIcon: ({ focused, color }) => (
-            <AnimatedTabIcon name="person-outline" focused={focused} color={color} />
-          )
+            <AnimatedTabIcon
+              name="heart-outline"
+              focused={focused}
+              color={color}
+            />
+          ),
         }}
       />
     </Tab.Navigator>

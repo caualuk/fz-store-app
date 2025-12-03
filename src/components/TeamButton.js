@@ -1,9 +1,9 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export default function TeamButton({ title }) {
+export default function TeamButton({ title, onPress }) {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
-    marginRight: 10
+    marginRight: 10,
   },
   text: {
     color: "#fff",
-    fontWeight: "600"
-  }
+    fontWeight: "600",
+  },
 });

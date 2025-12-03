@@ -10,7 +10,7 @@ export default function AnimatedTabIcon({ name, focused, color }) {
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      backgroundColor: withTiming(focused ? "#ff0000ff" : "transparent", { duration: 250 }),
+      backgroundColor: withTiming(focused ? "#120a8f" : "transparent", { duration: 250 }),
       paddingHorizontal: withTiming(focused ? 8 : 10, { duration: 250 }),
       paddingVertical: withTiming(focused ? 6 : 4, { duration: 250 }),
       borderRadius: 20,
