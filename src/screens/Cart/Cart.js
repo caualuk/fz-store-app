@@ -68,7 +68,7 @@ export default function Cart() {
               );
               return;
             }
-            
+
             const storePhone = "558193995599";
 
             // Monta a lista de itens com nome e quantidade
@@ -132,32 +132,46 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
-    backgroundColor: "#f5f5f5",
-    padding: 10,
-    borderRadius: 10,
+    marginBottom: 12,
+    backgroundColor: "#fff",
+    padding: 12,
+    borderRadius: 12,
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    borderLeftWidth: 4,
+    borderLeftColor: "#120a8f",
   },
   img: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-    marginRight: 10,
+    width: 70,
+    height: 90,
+    borderRadius: 10,
+    marginRight: 12,
+    backgroundColor: "#f5f5f5",
   },
   info: {
     flex: 1,
+    justifyContent: "space-between",
   },
   name: {
-    fontWeight: "600",
+    fontWeight: "700",
+    fontSize: 15,
+    color: "#000",
+    marginBottom: 6,
   },
   price: {
-    marginTop: 4,
+    fontSize: 14,
     color: "#120a8f",
+    fontWeight: "600",
   },
   remove: {
     backgroundColor: "#ff6b6b",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
     borderRadius: 8,
+    marginLeft: 8,
   },
   footer: {
     paddingVertical: 20,
